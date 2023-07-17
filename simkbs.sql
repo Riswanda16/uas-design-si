@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3307
--- Generation Time: Dec 07, 2022 at 01:06 AM
--- Server version: 10.1.38-MariaDB
--- PHP Version: 5.6.40
+-- Host: 127.0.0.1
+-- Generation Time: Jul 17, 2023 at 06:18 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.0.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -35,14 +34,14 @@ CREATE TABLE `tabel_control` (
   `alamat` text NOT NULL,
   `maps` text NOT NULL,
   `email` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tabel_control`
 --
 
 INSERT INTO `tabel_control` (`id`, `nama_desa`, `logo_desa`, `alamat`, `maps`, `email`) VALUES
-(1, 'Desa Tabongo', '1633914908.64566163901c9d9ff.png', 'Bumela, Bilato, Kabupaten Gorontalo, Gorontalo 96264', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31916.75211570069!2d122.6379923671223!3d0.6075519716319384!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x327919a38ef11033%3A0xc2b671aa1ef3b962!2sBumela%2C%20Bilato%2C%20Kabupaten%20Gorontalo%2C%20Gorontalo!5e0!3m2!1sid!2sid!4v1632378337874!5m2!1sid!2sid', 'desabumela@gmail.com');
+(1, 'Desa Kasri', 'Kabupaten-Malang.png', 'Kasri Krajan Kec. Bululawang Kab. Malang Prov. Jawa Timur65171', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15799.580439690479!2d112.6513685292978!3d-8.112161801109997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd621054820d0f3%3A0xba323c5b686494c2!2sKasri%2C%20Bululawang%2C%20Malang%20Regency%2C%20East%20Java!5e0!3m2!1sen!2sid!4v1688616546311!5m2!1sen!2sid', 'desakasri@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -53,18 +52,17 @@ INSERT INTO `tabel_control` (`id`, `nama_desa`, `logo_desa`, `alamat`, `maps`, `
 CREATE TABLE `tabel_dusun` (
   `id` int(11) NOT NULL,
   `dusun` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tabel_dusun`
 --
 
 INSERT INTO `tabel_dusun` (`id`, `dusun`) VALUES
-(1, 'Bolongga'),
-(2, 'Pelita'),
-(3, 'Pentadio'),
-(4, 'Basangi'),
-(5, 'Tanjakan');
+(1, 'Krajan'),
+(2, 'Baran'),
+(3, 'Kedok'),
+(4, 'Renteng');
 
 -- --------------------------------------------------------
 
@@ -74,7 +72,7 @@ INSERT INTO `tabel_dusun` (`id`, `dusun`) VALUES
 
 CREATE TABLE `tabel_kependudukan` (
   `NO_KK` char(16) NOT NULL,
-  `NIK` char(16) NOT NULL,
+  `NIK` varchar(16) NOT NULL,
   `NAMA_LGKP` varchar(50) NOT NULL,
   `HBKEL` varchar(2) NOT NULL,
   `JK` tinyint(1) NOT NULL,
@@ -93,43 +91,24 @@ CREATE TABLE `tabel_kependudukan` (
   `jenis_bantuan` varchar(100) NOT NULL,
   `ibu_hamil` varchar(2) NOT NULL,
   `disabilitas` varchar(2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tabel_kependudukan`
 --
 
 INSERT INTO `tabel_kependudukan` (`NO_KK`, `NIK`, `NAMA_LGKP`, `HBKEL`, `JK`, `TMPT_LHR`, `TGL_LHR`, `TAHUN`, `BULAN`, `HARI`, `NAMA_LGKP_AYAH`, `NAMA_LGKP_IBU`, `KECAMATAN`, `KELURAHAN`, `DSN`, `AGAMA`, `bantuan`, `jenis_bantuan`, `ibu_hamil`, `disabilitas`) VALUES
-('0987654321234567', '0987654321234587', 'terbaru', '1', 1, 'KABILA', '1996-12-06', '24', '10', '4', 'ADAM', 'rena', 'TILONGKABILA', 'BUTU', 3, 'islam', '0', '', '', '0'),
-('1234567890987654', '1234567890987678', 'ada  test', '1', 1, 'PANGGULO', '1995-12-06', '25', '6', '8', 'test ada', 'adatest', 'TILONGKABILA', 'BUTU', 1, 'islam', '0', '', '', '0'),
-('7503061001170005', '1302100901880001', 'ARIF FAREZA', '1', 1, 'MERAUKE', '1988-01-09', '33', '9', '1', 'AKMAL', 'YETTY DARZA', 'TILONGKABILA', 'BUTU', 1, 'islam', '0', '', '', '0'),
-('7678909876543212', '4565432123456789', 'paling baru', '1', 1, 'PANGGULO', '2001-12-06', '19', '9', '2', 'tida tau', 'sapaee', 'TILONGKABILA', 'BUTU', 1, 'khonghucu', '0', '', '', '0'),
-('7503061902180006', '7204040405770001', 'TASWIR', '1', 1, 'GORONTALO', '1972-09-10', '49', '1', '1', 'IDRUS', 'SARIBENNA', 'TILONGKABILA', 'BUTU', 2, 'islam', '1', 'PKH', '', '0'),
-('7503061108160004', '7371114901030001', 'IZZAH FAUZIAH IRFAN', '4', 2, 'MAKASSAR', '2003-01-09', '18', '5', '7', 'IRFAN IDRIS', 'SAIDAH SYAMSUDDIN', 'TILONGKABILA', 'BUTU', 2, 'islam', '', '', '', '0'),
-('7503060906150003', '7501190712690001', 'KARIM ADAM', '1', 1, 'SUWAWA', '1996-12-07', '24', '6', '7', 'ALI ADAM', 'ASRI TALANGO', 'TILONGKABILA', 'BUTU', 1, 'islam', '0', '', '', '0'),
-('7503062403160004', '7502012203100002', 'RAHMAT SUAIB', '9', 1, 'TILAMUTA', '2010-03-22', '11', '6', '20', 'WAHAB SUAIBA', 'NINING POMALINGO', 'TILONGKABILA', 'BUTU', 3, 'islam', '0', '', '', '0'),
-('7503030602080028', '7503030411020001', 'RIAN N. DAU', '4', 1, 'SUWAWA', '2002-11-04', '18', '7', '12', 'USMAN N. DAU', 'SEIKO ADAM', 'TILONGKABILA', 'BUTU', 1, 'islam', '', '', '', '0'),
-('7503030602080028', '7503031510970001', 'NOVAL ADAM', '4', 1, 'LIMEHE TIMUR', '1997-11-20', '23', '6', '26', 'KARIM ADAM', 'MARYAM IDRIS', 'TILONGKABILA', 'BUTU', 1, 'islam', '', '', '', '0'),
-('7503030602080028', '7503035010630002', 'HAPSA ADAM', '3', 2, 'SUWAWA', '1963-10-10', '57', '8', '6', 'ALI ADAM', 'ASRI TALANGO', 'TILONGKABILA', 'BUTU', 1, 'islam', '', '', '0', '0'),
-('7503060906150003', '7503035703070001', 'NIKMAWATI ADAM', '9', 2, 'GORONTALO', '2007-03-17', '14', '6', '25', 'KARIM ADAM', 'ROSITA ALI', 'TILONGKABILA', 'BUTU', 1, 'islam', '0', '', '', '0'),
-('7503061108160004', '7503060111850001', 'ISMAIL DJAFAR', '1', 1, 'KABILA', '1984-04-23', '37', '1', '23', 'DJAFAR ADAM', 'AMINAH RAHMAN', 'TILONGKABILA', 'BUTU', 2, 'islam', '1', 'BLT', '', '0'),
-('7503061207120001', '7503060510770001', 'RAMIN G LADIKU', '1', 1, 'GORONTALO', '1967-10-05', '53', '8', '12', 'GUGE LADIKU', 'SAONA TOYO', 'TILONGKABILA', 'BUTU', 1, 'islam', '0', '', '', '0'),
-('7503061001170005', '7503061208170001', 'ARFATTA DINAR FAREZA ', '9', 1, 'GORONTALO', '2017-08-12', '3', '10', '5', 'ARIF FAREZA', 'SELVIANA HASAN', 'TILONGKABILA', 'BUTU', 3, 'islam', '', '', '', '0'),
-('7503061302080160', '7503061212710002', 'GUNTUR SAMANI', '1', 1, 'GORONTALO', '1971-12-12', '49', '6', '5', 'SALDI SAMANI', 'NUNU DAUD', 'TILONGKABILA', 'BUTU', 2, 'islam', '0', '', '', '0'),
-('7503061211100005', '7503061308840001', 'YUMAN TALANGO', '1', 1, 'GORONTALO', '1984-08-13', '36', '10', '4', 'KARIM TALANGO', 'HAMI MASILI', 'TILONGKABILA', 'BUTU', 1, 'islam', '1', 'PKH', '', '0'),
-('7503061302080124', '7503061705470001', 'BAHRUDIN KARIM', '7', 1, 'GORONTALO', '1947-05-17', '74', '0', '28', 'DINGGI KARIM', 'HAPISA HUSAIN', 'TILONGKABILA', 'BUTU', 1, 'islam', '', '', '', '0'),
-('7503061302080056', '7503061706670001', 'DRS HENDRO NURJOKO MPKIM', '1', 1, 'LAMPUNG', '1967-06-17', '53', '11', '29', 'SENOHADICARETO', 'SRIMUN', 'TILONGKABILA', 'BUTU', 2, 'islam', '1', 'BST', '', '0'),
-('7503062403160004', '7503062306700001', 'WAHAB SUAIBA', '1', 1, 'GORONTALO', '1970-06-23', '50', '11', '23', 'HAJI SUAIBA', 'AISARI MOTI', 'TILONGKABILA', 'BUTU', 3, 'islam', '1', 'BLT', '', '0'),
-('7503061406120004', '750306251187002', 'ABD RAHMAN MOKO', '1', 1, 'ABD RAHMAN MOKO', '1987-11-25', '33', '6', '21', 'RISMAN MOKO', 'ASNA MALANGI', 'TILONGKABILA', 'BUTU', 3, 'islam', '0', '', '', '0'),
-('7503061302080160', '7503064206670001', 'HARLIN DJAFAR', '3', 2, 'GORONTALO', '1967-06-02', '54', '0', '15', 'ARDIN JAFAR', 'ADE HASAN', 'TILONGKABILA', 'BUTU', 2, 'islam', '', '', '0', '0'),
-('7503061108160004', '7503065112160001', 'SYAFIRA AZ-ZAHRA DJAFAR', '9', 2, 'PANGGULO', '2016-12-11', '4', '6', '5', 'ISMAIL DJAFAR', 'VENDRIYATI USMAN', 'TILONGKABILA', 'BUTU', 2, 'islam', '', '', '', '0'),
-('7503061001170005', '7503065407900001', 'SELVIANA HASAN', '3', 2, 'GORONTALO', '1990-03-14', '31', '6', '27', 'UMAR HASAN', 'MARYAM GANI', 'TILONGKABILA', 'BUTU', 3, 'islam', '0', '', '0', '0'),
-('7503061302080160', '7503065801010002', 'RISKAWATI SAMANI', '9', 2, 'GORONTALO', '2001-01-18', '20', '4', '30', 'GUNTUR SAMANI', 'HARLIN DJAFAR', 'TILONGKABILA', 'BUTU', 2, 'islam', '', '', '', '0'),
-('7503061108160004', '7503070907130001', 'AQILAH ADRIYANA DJAFAR', '9', 2, 'PANGGULO', '2013-07-09', '7', '11', '7', 'ISMAIL DJAFAR', 'VENDRIYATI USMAN', 'TILONGKABILA', 'BUTU', 2, 'islam', '', '', '', '0'),
-('7503061108160004', '7503075601900002', 'VENDRIYANTI USMAN', '3', 2, 'KABILA', '1990-01-16', '31', '5', '0', 'YACOB USMAN', 'NERLIN IGIRISA', 'TILONGKABILA', 'BUTU', 2, 'islam', '', '', '0', '0'),
-('7503062705190003', '7505020511640001', 'SONI MANYOE', '1', 1, 'TOLANGO', '1984-11-05', '36', '7', '11', 'HAMSA MANYOE', 'MUNA KAI', 'TILONGKABILA', 'BUTU', 2, 'islam', '0', '', '', '0'),
-('7503062401140002', '7571030805610001', 'SARJANA MILE', '1', 1, 'GORONTALO', '1961-05-08', '60', '1', '8', 'NAKI SADAPU', 'MARYAM NANGO', 'TILONGKABILA', 'BUTU', 1, 'islam', '1', 'BPNT', '', '0'),
-('9876543212345678', '9876543219876543', 'test HBKL', '4', 1, 'GORONTALO', '1956-12-06', '64', '6', '10', 'HBKL', 'BBHKL', 'TILONGKABILA', 'BUTU', 1, 'islam', '', '', '', '0');
+('0987654321098765', '1647398762537463', 'Imam Syafii', '1', 1, 'Malang', '1988-03-21', '35', '3', '23', 'Wajib', 'Ngatini', 'BULULAWANG', 'KASRI', 3, 'islam', '1', 'PKH', '', '0'),
+('1111111111111111', '2222222222222222', 'Ardiansyah', '1', 1, 'Malang', '1978-12-12', '44', '7', '1', 'Yuliono', 'Yulianti', 'BULULAWANG', 'KASRI', 4, 'hindu', '1', 'BST', '', '0'),
+('3648504759375746', '3446578685064956', 'Margaretta Firnanda', '9', 2, 'Malang', '2004-01-11', '19', '5', '25', 'Aris', 'Cariyati', 'BULULAWANG', 'KASRI', 1, 'kristen', '', '', '', '0'),
+('2435264524533733', '3453456754564674', 'Jeon Jungkook', '1', 1, 'Malang', '1998-12-05', '24', '7', '8', 'Aris', 'Cariyati', 'BULULAWANG', 'KASRI', 4, 'kristen', '0', '', '', '0'),
+('3445667489856374', '3455676950970778', 'Suparman', '1', 1, 'Malang', '1978-08-25', '44', '10', '11', 'Limin', 'Wagiyem', 'BULULAWANG', 'KASRI', 2, 'islam', '1', 'BLT', '', '0'),
+('1232323232321233', '3456676543245567', 'Suparman', '1', 1, 'Malang', '1977-11-12', '45', '8', '1', 'Limin', 'Lela', 'BULULAWANG', 'KASRI', 2, 'katolik', '1', 'BLT', '', '0'),
+('3501709928392839', '3546372837297765', 'Riswanda Amara', '9', 2, 'Malang', '2002-06-16', '21', '0', '19', 'Sujiono', 'Uswatun', 'BULULAWANG', 'KASRI', 1, 'islam', '', '', '', '0'),
+('3333333333333333', '4444444444444444', 'Rafi Ahmad', '1', 1, 'Malang', '1997-12-06', '25', '7', '7', 'Ahmad', 'Ammi', 'BULULAWANG', 'KASRI', 3, 'kristen', '0', '', '', '0'),
+('1234321234567890', '6453647586923456', 'Intan Dwi', '1', 2, 'Malang', '2000-12-31', '22', '6', '14', 'Hartono', 'Hartini', 'TILONGKABILA', 'BUTU', 3, 'budha', '0', '', '', '0'),
+('3546576857497876', '6767889987654345', 'Suparjo', '1', 1, 'Malang', '1965-06-13', '58', '0', '23', 'Takim', 'Lela', 'BULULAWANG', 'KASRI', 4, 'khonghucu', '1', 'BLT', '', '1'),
+('6677558898465789', '7768584869847698', 'Hafidz Ulum', '1', 1, 'Malang', '1988-03-04', '35', '4', '10', 'Udin', 'Eli', 'TILONGKABILA', 'BUTU', 1, 'islam', '1', 'BPNT', '', '0');
 
 -- --------------------------------------------------------
 
@@ -145,44 +124,24 @@ CREATE TABLE `tabel_konsumsi` (
   `PAKAIAN_PER_TAHUN` varchar(2) NOT NULL,
   `MAKAN_PER_HARI` varchar(2) NOT NULL,
   `BIAYA_PENGOBATAN` varchar(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tabel_konsumsi`
 --
 
 INSERT INTO `tabel_konsumsi` (`NIK`, `NAMA`, `BAHAN_MAKANAN`, `FREKUENSI_PER_MINGGU`, `PAKAIAN_PER_TAHUN`, `MAKAN_PER_HARI`, `BIAYA_PENGOBATAN`) VALUES
-('0987654321234587', 'terbaru', '1', '0', '1', '2', '0'),
-('1234567890987678', 'ada  test', '1', '0', '1', '2', '0'),
-('1302100901880001', 'ARIF FAREZA', '1', '0', '1', '2', '0'),
-('4565432123456789', 'paling baru', '1', '3', '3', '3', '1'),
-('7204040405770001', 'TASWIR', '1', '0', '1', '0', '0'),
-('7371114901030001', 'IZZAH FAUZIAH IRFAN', '', '', '', '', ''),
-('7501190712690001', 'KARIM ADAM', '1', '0', '1', '1', '0'),
-('7502012203100002', 'RAHMAT SUAIB', '', '0', '0', '0', '0'),
-('7503030411020001', 'RIAN N. DAU', '', '', '', '', ''),
-('7503031505690001', 'Explicabo Commodo d', '1', '0', '1', '2', '0'),
-('7503031510970001', 'NOVAL ADAM', '', '', '', '', ''),
-('7503035010630002', 'HAPSA ADAM', '', '', '', '', ''),
-('7503035703070001', 'NIKMAWATI ADAM', '', '0', '0', '0', '0'),
-('7503060111850001', 'ISMAIL DJAFAR', '1', '0', '1', '1', '0'),
-('7503060510770001', 'RAMIN G LADIKU', '1', '0', '1', '2', '0'),
-('7503061208170001', 'ARFATTA DINAR FAREZA ', '', '', '', '', ''),
-('7503061212710002', '', '', '0', '0', '0', '0'),
-('7503061308840001', 'YUMAN TALANGO', '1', '1', '1', '1', '0'),
-('7503061705470001', 'BAHRUDIN KARIM', '', '', '', '', ''),
-('7503061706670001', 'DRS HENDRO NURJOKO MPKIM', '1', '0', '1', '2', '0'),
-('7503062306700001', 'WAHAB SUAIBA', '1', '1', '1', '2', '0'),
-('750306251187002', 'ABD RAHMAN MOKO', '1', '0', '1', '2', '0'),
-('7503064206670001', 'HARLIN DJAFAR', '', '', '', '', ''),
-('7503065112160001', 'SYAFIRA AZ-ZAHRA DJAFAR', '', '', '', '', ''),
-('7503065407900001', '', '', '0', '0', '0', '0'),
-('7503065801010002', 'RISKAWATI SAMANI', '', '', '', '', ''),
-('7503070907130001', 'AQILAH ADRIYANA DJAFAR', '', '', '', '', ''),
-('7503075601900002', 'VENDRIYANTI USMAN', '', '', '', '', ''),
-('7505020511640001', 'SONI MANYOE', '1', '1', '1', '2', '0'),
-('7571030805610001', 'SARJANA MILE', '2', '0', '1', '2', '0'),
-('9876543219876543', 'test HBKL', '', '', '', '', '');
+('1647398762537463', 'Imam Syafii', '3', '1', '1', '3', '0'),
+('2222222222222222', 'Ardiansyah', '3', '1', '1', '2', '0'),
+('3446578685064956', 'Margaretta Firnanda', '', '', '', '', ''),
+('3453456754564674', 'Jeon Jungkook', '3', '3', '3', '3', '1'),
+('3455676950970778', 'Suparman', '3', '1', '1', '2', '0'),
+('3456676543245567', 'Suparman', '3', '1', '1', '3', '0'),
+('3546372837297765', 'Riswanda Amara', '', '', '', '', ''),
+('4444444444444444', 'Rafi Ahmad', '1', '3', '3', '3', '1'),
+('6453647586923456', 'Intan Dwi', '1', '2', '2', '3', '2'),
+('6767889987654345', 'Suparjo', '3', '1', '1', '1', '0'),
+('7768584869847698', 'Hafidz Ulum', '3', '1', '0', '2', '0');
 
 -- --------------------------------------------------------
 
@@ -195,44 +154,24 @@ CREATE TABLE `tabel_pekerjaan` (
   `NAMA` varchar(50) NOT NULL,
   `PEKERJAAN` varchar(30) NOT NULL,
   `PENGHASILAN_PER_BULAN` int(12) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tabel_pekerjaan`
 --
 
 INSERT INTO `tabel_pekerjaan` (`NIK`, `NAMA`, `PEKERJAAN`, `PENGHASILAN_PER_BULAN`) VALUES
-('0987654321234587', 'terbaru', 'Buruh Tani', 599999),
-('1234567890987678', 'ada  test', 'Buruh Bangunan', 300000),
-('1302100901880001', 'ARIF FAREZA', 'Buruh Bangunan', 500000),
-('4565432123456789', 'paling baru', 'Pengolahan/Industri', 50000000),
-('7204040405770001', 'TASWIR', 'Buruh Bangunan', 500000),
-('7371114901030001', 'IZZAH FAUZIAH IRFAN', '--Pilih Pekerjaan--', 0),
-('7501190712690001', 'KARIM ADAM', 'Buruh Tani', 500000),
-('7502012203100002', 'RAHMAT SUAIB', 'TKI', 0),
-('7503030411020001', 'RIAN N. DAU', 'Tidak Bekerja', 0),
-('7503031505690001', 'Explicabo Commodo d', 'Pengolahan/Industri', 70),
-('7503031510970001', 'NOVAL ADAM', 'Tidak Bekerja', 0),
-('7503035010630002', 'HAPSA ADAM', 'Buruh Tani', 500000),
-('7503035703070001', 'NIKMAWATI ADAM', 'Perangkat Desa', 0),
-('7503060111850001', 'ISMAIL DJAFAR', 'Buruh Bangunan', 500000),
-('7503060510770001', 'RAMIN G LADIKU', 'Buruh Tani', 500000),
-('7503061208170001', 'ARFATTA DINAR FAREZA ', 'Tidak Bekerja', 0),
-('7503061212710002', 'GUNTUR SAMANI', 'Nelayan', 500000),
-('7503061308840001', 'YUMAN TALANGO', 'Buruh Tani', 500000),
-('7503061705470001', 'BAHRUDIN KARIM', 'Tidak Bekerja', 0),
-('7503061706670001', 'DRS HENDRO NURJOKO MPKIM', 'Buruh Tani', 500000),
-('7503062306700001', 'WAHAB SUAIBA', 'Buruh Perkebunan', 500000),
-('750306251187002', 'ABD RAHMAN MOKO', 'Petani', 500000),
-('7503064206670001', 'HARLIN DJAFAR', 'Tidak Bekerja', 0),
-('7503065112160001', 'SYAFIRA AZ-ZAHRA DJAFAR', '--Pilih Pekerjaan--', 0),
-('7503065407900001', 'SELVIANA HASAN', 'Tidak Bekerja', 0),
-('7503065801010002', 'RISKAWATI SAMANI', 'Tidak Bekerja', 0),
-('7503070907130001', 'AQILAH ADRIYANA DJAFAR', '--Pilih Pekerjaan--', 0),
-('7503075601900002', 'VENDRIYANTI USMAN', 'Buruh Tani', 500000),
-('7505020511640001', 'SONI MANYOE', 'Buruh Bangunan', 400000),
-('7571030805610001', 'SARJANA MILE', 'Buruh Tani', 500000),
-('9876543219876543', 'test HBKL', 'Buruh Tani', 500000);
+('1647398762537463', 'Imam Syafii', 'Lainnya', 2000000),
+('2222222222222222', 'Ardiansyah', 'Guru', 300000),
+('3446578685064956', 'Margaretta Firnanda', 'PNS', 3300000),
+('3453456754564674', 'Jeon Jungkook', 'Pedagang Besar', 5000000),
+('3455676950970778', 'Suparman', 'Buruh Tani', 900000),
+('3456676543245567', 'Suparman', 'Buruh Tani', 900000),
+('3546372837297765', 'Riswanda Amara', 'Pedagang Kecil', 2000000),
+('4444444444444444', 'Rafi Ahmad', 'Lainnya', 15000000),
+('6453647586923456', 'Intan Dwi', 'TKI', 10000000),
+('6767889987654345', 'Suparjo', 'Buruh Tani', 800000),
+('7768584869847698', 'Hafidz Ulum', 'Tidak Bekerja', 0);
 
 -- --------------------------------------------------------
 
@@ -244,44 +183,24 @@ CREATE TABLE `tabel_pendidikan` (
   `NIK` varchar(16) NOT NULL,
   `NAMA` varchar(50) NOT NULL,
   `PENDIDIKAN_TERAKHIR` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tabel_pendidikan`
 --
 
 INSERT INTO `tabel_pendidikan` (`NIK`, `NAMA`, `PENDIDIKAN_TERAKHIR`) VALUES
-('0987654321234587', 'terbaru', 'Tidak Tamat SD'),
-('1234567890987678', 'ada  test', 'Tidak Tamat SD'),
-('1302100901880001', 'ARIF FAREZA', 'Tidak Tamat SD'),
-('4565432123456789', 'paling baru', 'S3 dan Sederajat'),
-('7204040405770001', 'TASWIR', 'Tidak Tamat SD'),
-('7371114901030001', 'IZZAH FAUZIAH IRFAN', 'SMA dan Sederajat'),
-('7501190712690001', 'KARIM ADAM', 'Tidak Tamat SD'),
-('7502012203100002', 'RAHMAT SUAIB', 'SD dan Sederajat'),
-('7503030411020001', 'RIAN N. DAU', 'S1 dan Sederajat'),
-('7503031505690001', 'Explicabo Commodo d', 'Tidak Tamat SD'),
-('7503031510970001', 'NOVAL ADAM', 'S1 dan Sederajat'),
-('7503035010630002', 'HAPSA ADAM', 'Tidak Tamat SD'),
-('7503035703070001', 'NIKMAWATI ADAM', 'SMP dan Sederajat'),
-('7503060111850001', 'ISMAIL DJAFAR', 'Tidak Tamat SD'),
-('7503060510770001', 'RAMIN G LADIKU', 'SMA dan Sederajat'),
-('7503061208170001', 'ARFATTA DINAR FAREZA ', 'SD dan Sederajat'),
-('7503061212710002', '', '--Pilih Pendidikan--'),
-('7503061308840001', 'YUMAN TALANGO', 'Tidak Tamat SD'),
-('7503061705470001', 'BAHRUDIN KARIM', 'Tidak Tamat SD'),
-('7503061706670001', 'DRS HENDRO NURJOKO MPKIM', 'Tidak Tamat SD'),
-('7503062306700001', 'WAHAB SUAIBA', 'Tidak Tamat SD'),
-('750306251187002', 'ABD RAHMAN MOKO', 'Tidak Tamat SD'),
-('7503064206670001', 'HARLIN DJAFAR', 'Tidak Sekolah'),
-('7503065112160001', 'SYAFIRA AZ-ZAHRA DJAFAR', 'Tidak Sekolah'),
-('7503065407900001', '', '--Pilih Pendidikan--'),
-('7503065801010002', 'RISKAWATI SAMANI', 'S1 dan Sederajat'),
-('7503070907130001', 'AQILAH ADRIYANA DJAFAR', 'SD dan Sederajat'),
-('7503075601900002', 'VENDRIYANTI USMAN', 'SMP dan Sederajat'),
-('7505020511640001', 'SONI MANYOE', 'Tidak Tamat SD'),
-('7571030805610001', 'SARJANA MILE', 'Tidak Tamat SD'),
-('9876543219876543', 'test HBKL', 'Tidak Tamat SD');
+('1647398762537463', 'Imam Syafii', 'SMP dan Sederajat'),
+('2222222222222222', 'Ardiansyah', 'SMA dan Sederajat'),
+('3446578685064956', 'Margaretta Firnanda', 'SMA dan Sederajat'),
+('3453456754564674', 'Jeon Jungkook', 'Diploma 1-3'),
+('3455676950970778', 'Suparman', 'Tidak Tamat SD'),
+('3456676543245567', 'Suparman', 'Tidak Sekolah'),
+('3546372837297765', 'Riswanda Amara', 'SMA dan Sederajat'),
+('4444444444444444', 'Rafi Ahmad', 'SMA dan Sederajat'),
+('6453647586923456', 'Intan Dwi', 'S2 dan Sederajat'),
+('6767889987654345', 'Suparjo', 'Tidak Tamat SD'),
+('7768584869847698', 'Hafidz Ulum', 'SD dan Sederajat');
 
 -- --------------------------------------------------------
 
@@ -298,7 +217,7 @@ CREATE TABLE `tabel_rumah` (
   `SUMBER_PENERANGAN` tinyint(1) NOT NULL,
   `SUMBER_AIR_MINUM` varchar(30) NOT NULL,
   `BAHAN_BAKAR_MEMASAK` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tabel_rumah`
@@ -306,19 +225,13 @@ CREATE TABLE `tabel_rumah` (
 
 INSERT INTO `tabel_rumah` (`NIK`, `LUAS_LANTAI`, `JENIS_LANTAI`, `JENIS_DINDING`, `FASILITAS_BAB`, `SUMBER_PENERANGAN`, `SUMBER_AIR_MINUM`, `BAHAN_BAKAR_MEMASAK`) VALUES
 ('', 0, '--Pilih Jenis Lantai', '--Pilih Jenis Dinding--', 1, 1, '--Pilih Sumber Air Minum--', '--Pilih Bahan Bakar '),
-('0987654321234587', 1, 'Semen', 'Tembok Tanpa Di Plester', 0, 0, 'Air Hujan', 'Minyak Tanah'),
-('1234567890987678', 1, 'Tanah', 'Kayu berkualitas rendah/Bambu', 0, 0, 'Mata air tidak terlindung', 'Kayu Bakar'),
-('1302100901880001', 1, 'Bambu', 'Bambu', 0, 0, 'Sungai', 'Kayu Bakar'),
-('7204040405770001', 1, 'Bambu', 'Kayu berkualitas rendah/Bambu', 0, 0, 'Mata air tidak terlindung', 'Kayu Bakar'),
-('7501190712690001', 1, 'Bambu', 'Kayu berkualitas rendah/Bambu', 0, 0, 'Mata air tidak terlindung', 'Kayu Bakar'),
-('7503060111850001', 1, 'Kayu/Papan', 'Rumbia', 0, 0, 'Sungai', 'Kayu Bakar'),
-('7503061212710002', 1, 'Kayu/Papan', 'Rumbia', 0, 0, 'Mata Air tidak Terlindung', 'Kayu Bakar'),
-('7503061308840001', 1, 'Bambu', 'Kayu berkualitas rendah/Bambu', 0, 0, 'Mata air tidak terlindung', 'Kayu Bakar'),
-('7503061706670001', 1, 'Kayu/Papan', 'Bambu', 0, 0, 'Sungai', 'Kayu Bakar'),
-('7503062306700001', 1, 'Bambu', 'Rumbia', 0, 0, 'Mata Air tidak Terlindung', 'Kayu Bakar'),
-('750306251187002', 1, 'Kayu/Papan', 'Bambu', 0, 0, 'Air Hujan', 'Minyak Tanah'),
-('7505020511640001', 1, 'Bambu', 'Rumbia', 0, 0, 'Mata Air tidak Terlindung', 'Kayu Bakar'),
-('7571030805610001', 1, 'Bambu', 'Bambu', 0, 0, 'Mata Air tidak Terlindung', 'Kayu Bakar');
+('1647398762537463', 2, 'Keramik', 'Lainnya', 1, 1, 'Mata Air tidak Terlindung', 'Gas'),
+('2222222222222222', 1, 'Keramik', 'Tembok Tanpa Di Plester', 1, 1, 'Mata Air tidak Terlindung', 'Gas'),
+('3453456754564674', 2, 'Keramik', 'Lainnya', 1, 1, 'Mata Air tidak Terlindung', 'Gas'),
+('3455676950970778', 1, 'Semen', 'Bambu', 1, 1, 'Mata Air tidak Terlindung', 'Kayu Bakar'),
+('3456676543245567', 1, 'Kayu/Papan', 'Bambu', 1, 1, 'Mata Air tidak Terlindung', 'Kayu Bakar'),
+('4444444444444444', 2, 'Marmer', 'Lainnya', 1, 1, 'Mata Air tidak Terlindung', 'Gas'),
+('6767889987654345', 1, 'Semen', 'Tembok Tanpa Di Plester', 0, 1, 'Mata Air tidak Terlindung', 'Gas');
 
 -- --------------------------------------------------------
 
@@ -332,44 +245,24 @@ CREATE TABLE `tabel_tabungan` (
   `KEPEMILIKAN_TABUNGAN` varchar(1) NOT NULL,
   `JENIS_TABUNGAN` varchar(4) NOT NULL,
   `HARGA` varchar(9) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tabel_tabungan`
 --
 
 INSERT INTO `tabel_tabungan` (`NIK`, `NAMA`, `KEPEMILIKAN_TABUNGAN`, `JENIS_TABUNGAN`, `HARGA`) VALUES
-('0987654321234587', 'terbaru', '0', '', ''),
-('1234567890987678', 'ada  test', '0', '', ''),
-('1302100901880001', 'ARIF FAREZA', '0', '', ''),
-('4565432123456789', 'paling baru', '1', '5', '100000000'),
-('7204040405770001', 'TASWIR', '0', '', ''),
-('7371114901030001', 'IZZAH FAUZIAH IRFAN', '', '', ''),
-('7501190712690001', 'KARIM ADAM', '0', '', ''),
-('7502012203100002', 'RAHMAT SUAIB', '0', '', ''),
-('7503030411020001', 'RIAN N. DAU', '', '', ''),
-('7503031505690001', 'Explicabo Commodo d', '0', '', ''),
-('7503031510970001', 'NOVAL ADAM', '', '', ''),
-('7503035010630002', 'HAPSA ADAM', '', '', ''),
-('7503035703070001', 'NIKMAWATI ADAM', '0', '', ''),
-('7503060111850001', 'ISMAIL DJAFAR', '0', '', ''),
-('7503060510770001', 'RAMIN G LADIKU', '0', '', ''),
-('7503061208170001', 'ARFATTA DINAR FAREZA ', '', '', ''),
-('7503061212710002', '', '0', '', ''),
-('7503061308840001', 'YUMAN TALANGO', '0', '', ''),
-('7503061705470001', 'BAHRUDIN KARIM', '', '', ''),
-('7503061706670001', 'DRS HENDRO NURJOKO MPKIM', '0', '', ''),
-('7503062306700001', 'WAHAB SUAIBA', '0', '', ''),
-('750306251187002', 'ABD RAHMAN MOKO', '0', '', ''),
-('7503064206670001', 'HARLIN DJAFAR', '', '', ''),
-('7503065112160001', 'SYAFIRA AZ-ZAHRA DJAFAR', '', '', ''),
-('7503065407900001', '', '0', '', ''),
-('7503065801010002', 'RISKAWATI SAMANI', '', '', ''),
-('7503070907130001', 'AQILAH ADRIYANA DJAFAR', '', '', ''),
-('7503075601900002', 'VENDRIYANTI USMAN', '', '', ''),
-('7505020511640001', 'SONI MANYOE', '0', '', ''),
-('7571030805610001', 'SARJANA MILE', '0', '', ''),
-('9876543219876543', 'test HBKL', '', '', '');
+('1647398762537463', 'Imam Syafii', '0', '', ''),
+('2222222222222222', 'Ardiansyah', '0', '', ''),
+('3446578685064956', 'Margaretta Firnanda', '', '', ''),
+('3453456754564674', 'Jeon Jungkook', '1', '2', '10000000'),
+('3455676950970778', 'Suparman', '0', '', ''),
+('3456676543245567', 'Suparman', '0', '', ''),
+('3546372837297765', 'Riswanda Amara', '', '', ''),
+('4444444444444444', 'Rafi Ahmad', '1', '5', '13000000'),
+('6453647586923456', 'Intan Dwi', '1', '2', '12000000'),
+('6767889987654345', 'Suparjo', '0', '', ''),
+('7768584869847698', 'Hafidz Ulum', '0', '', '');
 
 -- --------------------------------------------------------
 
@@ -382,7 +275,7 @@ CREATE TABLE `user` (
   `nama` varchar(100) NOT NULL,
   `username` varchar(10) NOT NULL,
   `pass` varchar(80) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `user`
